@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h2 align="center"><b>Dashboard</b></h2>
+<br>
+<center>
+<div class="card w-75 mb-3">
+    <div class="card-body">
+        <div class="container text-center">
+            <div class="row">
+              <div class="col">
+                {% for i in model %}
+                {% if user == i.author %}
+                <h3>{{i.secret_name}}</h3>
+                {% endif %}
+                {% endfor %}
+              </div>
+              <div class="col">
+              </div>
+              <div class="col">
+                <a href="{% url 'blogapp:createpost' %}" style="align-self: flex-end;" class="btn btn-outline-danger"><b>+</b></a>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+</center>
+{% endblock %}

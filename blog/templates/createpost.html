@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h2 align="center"><b>Create Post</b></h2>
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    <div class="container" style="position: relative; left: 350px;">
+        <div class="jumbotron" >
+            <div class="card w-50 mb-3" style="border: 0px;">
+                <div class="card-body">
+                    <div class="w-75 mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Title">
+                    </div>
+                    <div class="w-75 mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="w-75 mb-3">
+                        <label for="formFile" class="form-label">Image</label>
+                        <input class="form-control" multiple type="file" name="image" id="formFile">
+                    </div>
+                    <div class="w-75 mb-3">
+                        <input type="submit" value="Post" class="btn btn-outline-success">
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</form>
+
+{% endblock %}

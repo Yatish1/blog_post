@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br>
+<h2 align="center">Login</h2>
+<br>
+<center>
+    <form method="POST">
+        {% csrf_token %}
+            <label for="">Username :</label>  <input type="text" name="username" id=""><br><br>
+            <label for="">Password :</label>   <input type="password" name="password" id="">
+            <br><br>
+            <input type="submit" value="Login" class="btn btn-dark">
+            <a href="{% url 'blogapp:index' %}" class="btn btn-dark">Back</a>
+    </form>
+</center>
+{% endblock %}

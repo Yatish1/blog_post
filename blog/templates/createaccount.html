@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<br><br>
+<h2 align="center">Create Account</h2>
+<br>
+<center>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+        {{user_formA.as_table}}
+        {{user_formB.as_table}}
+        </table>
+        <br><br>
+        <input type="submit" value="Create Account" class="btn btn-dark">
+        <a href="{% url 'blogapp:index' %}" class="btn btn-dark">Back</a>
+    </form>
+</center>
+{% endblock %}

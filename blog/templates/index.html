@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<br><br>
+<h2 align="center" style="color: brown;">Welcome to Blog Post</h2>
+<br>
+<center><a href="{% url 'blogapp:dashboard' %}" class="btn btn-outline-success">Create Post</a></center>
+<hr><br>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            {% for i in model %}
+            <div class="col-md-12">
+                <div class="card card-body w-50" style="border: 0;">
+                    <ul style="list-style-type: none;">
+                        {% for j in umodel %}
+                        {% if i.user == j.author %}
+                        <li><h4 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>{{j.secret_name}}</b></h4></li>
+                        {% endif %}
+                        {% endfor %}
+                        <li><h6 style="font-family: TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;">{{i.title}}</h6></li>
+                        <li><p style="font-size:small; font-family:Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;">{{i.description}}</p></li>
+                        {% if i.image %}
+                        <li><img src="{{ i.image.url }}" alt="no img" width="75%"></li>
+                        {% endif %}
+                        <li><p style="color: rgb(100, 100, 100); font-size:smaller;">{{i.date}}</p></li>
+                    </ul>
+                    
+                </div>
+                <hr><hr>
+                <br>
+            </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% else %}
+<br><br>
+<center>
+<div class="container">
+    <a href="{% url 'blogapp:login' %}" class="btn btn-outline-dark">Login</a><br><br>
+    <h5>or</h5><br>
+    <a href="{% url 'blogapp:createaccount' %}" class="btn btn-outline-dark">Create Account</a>
+</div>
+</center>
+{% endif %}
+
+
+{% endblock %}

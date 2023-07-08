@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <!-- {% for i in model %}
+            <div class="col-md-12">
+                <div class="card card-body w-50" style="border: 0;">
+                    <ul style="list-style-type: none;">
+                        {% for j in umodel %}
+                        {% if i.user == j.author %}
+                        <li><h4 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><b>{{j.secret_name}}</b></h4></li>
+                        {% endif %}
+                        {% endfor %}
+                        <li><h6 style="font-family: TimesNewRoman, Times New Roman, Times, Baskerville, Georgia, serif;">{{i.title}}</h6></li>
+                        <li><p style="font-size:small; font-family:Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;">{{i.description}}</p></li>
+                        {% if i.image %}
+                        <li><img src="{{ i.image.url }}" alt="" width="75%"></li>
+                        {% endif %}
+                        <li><p style="color: rgb(100, 100, 100); font-size:smaller;">{{i.date}}</p></li>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <p><a class="btn btn-warning" href="{% url 'blogapp:update' pk=post_models.pk %}">Edit</a></p>
+                        </form>
+                        
+                    </ul>
+                </div>
+                <br>
+            </div>
+            <hr><hr>
+            {% endfor %} -->
+            <div class="col-md-12">
+                <h2>{{ post_models.title }}</h2>
+                        <p>{{ post_models.description }}</p>
+                            {% if post_models.image %}
+                                <img src="{{post_models.image.url}}" alt="no img">
+                            {% endif %}
+                        <p>{{ post_models.date }}</p>
+                    <a class="btn btn-warning" href="{% url 'blogapp:update' pk=post_models.pk %}">Update</a>
+                    <a class="btn btn-danger" href="{% url 'blogapp:delete' pk=post_models.pk %}">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
